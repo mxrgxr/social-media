@@ -1,0 +1,8 @@
+<%= form_with(model: [commentable, Comment.new], local: true) do |form| %>
+  <%= form.hidden_field :parent_id, value: parent_id %>
+  <div class="form-group">
+    <%= form.label :body, "Comment" %>
+    <%= form.text_area :body %>
+  </div>
+  <%= form.submit "Submit"%>
+<% end %>
