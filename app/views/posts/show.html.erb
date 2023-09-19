@@ -1,3 +1,7 @@
 <h1><%= @post.title %></h1>
 <p><%= @post.body %></p>
 <p>Posted by: <%= @post.user.email %></p>
+
+<%= render 'comments/form' %>
+
+<%= render @post.comments %>
