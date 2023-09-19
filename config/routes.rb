@@ -4,10 +4,6 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, except: [:edit, :update]
   end
-
-  resources :comments do
-    resources :comments, except: [:edit, :update]
-  end
   # Defines the root path route ("/")
-  # root "articles#index"
+  root "posts#index"
 end
