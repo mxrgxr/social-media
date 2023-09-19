@@ -1,8 +1,9 @@
-<%= form_with model: [ @post, @post.comments.build ] do |form| %>
+<%= form_with model: [ @post, @post.comments.build(parent_id: local_assigns[:parent_id]) ] do |form| %>
+  <%= form.hidden_field :parent_id %>
   <p>
-    <%= form.text_area :body%>
+    <%= form.text_area :body %>
   </p>
   <p>
-    <%= form.submit%>
+    <%= form.submit %>
   </p>
 <% end %>
