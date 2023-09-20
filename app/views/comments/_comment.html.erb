@@ -21,7 +21,12 @@
         const commentForm = event.target.nextElementSibling.querySelector(".comment-form");
         const parentIdInput = commentForm.querySelector("input[name='comment[parent_id]']");
         parentIdInput.value = event.target.dataset.parentId;
-        commentForm.style.display = "block";
+
+        if (commentForm.style.display === "block") {
+          commentForm.style.display = "none";
+        } else {
+          commentForm.style.display = "block";
+        }
       });
     });
   });
