@@ -1,4 +1,5 @@
 <div>
+  <p><%=comment.user.email%>: </p>
   <p><%= comment.body %></p>
   <% if user_signed_in? %>
     <%= link_to "Reply", "#", class: "reply-link", data: { parent_id: comment.id } %>
@@ -8,6 +9,7 @@
       </div>
     </div>
   <% end %>
+  <hr />
 </div>
 
 <script>
