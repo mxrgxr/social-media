@@ -1,5 +1,5 @@
-<div>
-  <p><%=comment.user.email%>: </p>
+<div class="comment">
+  <p><%= comment.user.email %>:</p>
   <p><%= comment.body %></p>
   <% if user_signed_in? %>
     <%= link_to "Reply", "#", class: "reply-link", data: { parent_id: comment.id } %>
@@ -13,21 +13,17 @@
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const replyLinks = document.querySelectorAll(".reply-link");
-    replyLinks.forEach(function(replyLink) {
-      replyLink.addEventListener("click", function(event) {
-        event.preventDefault();
-        const commentForm = event.target.nextElementSibling.querySelector(".comment-form");
-        const parentIdInput = commentForm.querySelector("input[name='comment[parent_id]']");
-        parentIdInput.value = event.target.dataset.parentId;
+  document.querySelector('.comments-container').addEventListener('click', function(event) {
+    if (event.target.classList.contains('reply-link')) {
+      event.preventDefault();
 
-        if (commentForm.style.display === "block") {
-          commentForm.style.display = "none";
-        } else {
-          commentForm.style.display = "block";
-        }
-      });
-    });
+      const commentElement = event.target.closest('.comment');
+      const dropdownMenu = commentElement.querySelector('.dropdown-menu.comment-form');
+
+      const parentIdInput = dropdownMenu.querySelector("input[name='comment[parent_id]']");
+      parentIdInput.value = event.target.dataset.parentId;
+
+      dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'block' : 'none';
+    }
   });
 </script>

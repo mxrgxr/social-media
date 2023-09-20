@@ -13,4 +13,6 @@
     <%= render 'comments/form' %>
 <% end %>
 
-<%= render partial: "comments/comment", collection: @post.comments.where(parent_id: nil) %>
+<div class="comments-container">
+  <%= render_nested_comments(@post.comments.top_level) %>
+</div>
