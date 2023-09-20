@@ -2,10 +2,20 @@
   <div>
     <%= form.label :title %>
     <%= form.text_field :title %>
+    <% if @post.errors.any? %>
+      <div class="error-message">
+        <%= @post.errors.full_messages_for(:title).join(", ") %>
+      </div>
+    <% end %>
   </div>
   <div>
     <%= form.label :body %>
     <%= form.text_area :body %>
+    <% if @post.errors.any? %>
+      <div class="error-message">
+        <%= @post.errors.full_messages_for(:body).join(", ") %>
+      </div>
+    <% end %>
   </div>
   <div>
     <%= form.submit %>

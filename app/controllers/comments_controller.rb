@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to post_path(@post)
     else
-      render 'posts/show'
+      render 'posts/show', status: :unprocessable_entity
     end
   end
 
