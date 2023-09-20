@@ -1,13 +1,13 @@
 <div>
   <p><%= comment.body %></p>
-  <%= link_to "Reply", "#", class: "reply-link", data: { parent_id: comment.id } %>
-  <%= render partial: "comments/comment", collection: comment.replies %>
-  
-  <div class="dropdown">
-    <div class="dropdown-menu comment-form" style="display: none;">
-      <%= render 'comments/form', locals: { parent_id: comment.id } %>
+  <% if user_signed_in? %>
+    <%= link_to "Reply", "#", class: "reply-link", data: { parent_id: comment.id } %>
+    <div class="dropdown">
+      <div class="dropdown-menu comment-form" style="display: none;">
+        <%= render 'comments/form', locals: { parent_id: comment.id } %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
 
 <script>

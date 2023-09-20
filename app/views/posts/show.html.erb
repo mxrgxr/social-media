@@ -2,6 +2,8 @@
 <p><%= @post.body %></p>
 <p>Posted by: <%= @post.user.email %></p>
 
-<%= render 'comments/form' %>
+<% if user_signed_in? %>
+    <%= render 'comments/form' %>
+<% end %>
 
 <%= render partial: "comments/comment", collection: @post.comments.where(parent_id: nil) %>
