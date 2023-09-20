@@ -3,6 +3,9 @@
   <p><%= comment.body %></p>
   <% if user_signed_in? %>
     <%= link_to "Reply", "#", class: "reply-link", data: { parent_id: comment.id } %>
+    <% if comment.user == current_user %>
+      <%= button_to "Delete", post_comment_path(@post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
     <div class="dropdown">
       <div class="dropdown-menu comment-form" style="display: none;">
         <%= render 'comments/form', locals: { parent_id: comment.id } %>
